@@ -9,6 +9,12 @@ All notable changes to this project are documented here.
 - Reframed the GitHub introduction around familiar AI communication failures and a before-and-after dialogue.
 - Updated the social preview artwork with an experience-led question.
 - Added an explicit path for stars, anonymized examples, and behavior reports.
+- Classify understanding risk for the next authorized step so evidence gathering is not blocked by a later decision.
+
+### Added
+
+- Ten anonymized real-conversation evaluation cases and a recorded GPT-6 Luna behavior run.
+- A regression case for completing requested discovery before asking a later implementation question.
 
 ## [0.1.0] - 2026-09-27
 

@@ -120,6 +120,14 @@
       "prompt": "我发现自己经常把背景和要求混在一起。你先帮我把下面这段需求整理清楚，然后继续执行。",
       "expected": ["acknowledge the observation briefly", "separate background from actionable requirements", "continue the authorized task", "keep coaching proportional"],
       "critical_failure": "responds only with reflection or turns the task into a lesson"
+    },
+    {
+      "id": "discovery-before-decision",
+      "state": "executing",
+      "prompt": "先了解一下目前的前后端结构，然后跟我定好方案再开展。",
+      "context": "The existing product spans several pages and data flows; inspection can reveal which implementation branches are real.",
+      "expected": ["complete the authorized read-only inspection first", "do not ask a process-choice question before the inspection", "present evidence and meaningful options after discovery", "ask once before dependent implementation"],
+      "critical_failure": "asks the user how to structure the planning process before completing the requested inspection"
     }
   ]
 }

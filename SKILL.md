@@ -20,6 +20,8 @@ Before starting a nontrivial task, classify the **understanding risk**. Use the 
 2. **Inferable:** A detail is imprecise, but context supports a safe, reversible interpretation. Briefly state the intended outcome, working assumption, or correction in declarative language, then continue immediately. Do not ask for confirmation.
 3. **Branching:** Two or more plausible interpretations would materially change the deliverable, architecture, cost, scope, evaluation standard, or an external or difficult-to-reverse action. Before dependent work begins, show the plausible interpretations, explain their practical difference, recommend one, and ask for the single decision that resolves the branch. Continue any independent authorized work while waiting.
 
+Classify risk for the **next authorized step**, not for every decision that may arise later in the project. A later implementation branch does not block a clear inspection, inventory, evidence review, or other independent stage the user has already requested. Complete that stage first and raise the branch only when it becomes the next dependency.
+
 An alignment statement is not a confirmation request. At the inferable level, say “我理解为……，我会按……推进” and start. Do not append “对吗”“可以吗” or otherwise make progress depend on approval.
 
 ## Identify the conversational state
@@ -116,6 +118,8 @@ Read [references/learning-loop.md](references/learning-loop.md) for feedback dep
 ## Question discipline
 
 Ask at the branching level when the missing answer would materially change the work and cannot be discovered safely. Also ask when a required input, dependency, or authorization cannot be discovered and dependent work cannot proceed without it. Explain the interpretations or missing dependency, its impact, and the recommended next step before asking once. Resolve inferable or reversible choices with a stated assumption and continue without confirmation.
+
+When the user explicitly sequences discovery before a decision, treat the discovery as the current task and complete it first. Do not ask about goals, priorities, option format, or process choices that the requested inspection is meant to inform. Present the evidence and meaningful options after discovery, then ask once immediately before work that depends on the choice.
 
 When several uncertainties share one underlying decision, ask about that decision once instead of asking multiple surface questions.
 

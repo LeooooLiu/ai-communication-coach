@@ -19,6 +19,8 @@ REQUIRED_FILES = {
     "LICENSE",
     "agents/openai.yaml",
     "evals/behavioral-cases.json",
+    "evals/real-conversation-cases.json",
+    "evals/runs/2026-09-27-gpt-6-luna.md",
     "references/diagnostic-framework.md",
     "references/examples.md",
     "references/learning-loop.md",
@@ -59,17 +61,23 @@ def validate_python() -> None:
         ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
 
 
-def validate_behavior_cases() -> None:
-    data = json.loads((ROOT / "evals/behavioral-cases.json").read_text(encoding="utf-8"))
+def validate_case_file(relative_path: str) -> int:
+    data = json.loads((ROOT / relative_path).read_text(encoding="utf-8"))
     cases = data.get("cases", [])
-    require(cases, "Behavioral cases are required")
+    require(cases, f"Cases are required in {relative_path}")
     ids = [case.get("id") for case in cases]
-    require(len(ids) == len(set(ids)), "Behavioral case IDs must be unique")
+    require(len(ids) == len(set(ids)), f"Case IDs must be unique in {relative_path}")
     required = {"id", "state", "prompt", "expected", "critical_failure"}
     for case in cases:
         missing = required - case.keys()
         require(not missing, f"Case {case.get('id', '<unknown>')} is missing: {sorted(missing)}")
         require(bool(case["expected"]), f"Case {case['id']} has no expected behavior")
+    return len(cases)
+
+
+def validate_behavior_cases() -> None:
+    validate_case_file("evals/behavioral-cases.json")
+    validate_case_file("evals/real-conversation-cases.json")
 
 
 def validate_manifest() -> None:
@@ -120,9 +128,13 @@ def main() -> int:
         print(f"Validation failed: {exc}", file=sys.stderr)
         return 1
 
-    case_count = len(json.loads((ROOT / "evals/behavioral-cases.json").read_text(encoding="utf-8"))["cases"])
+    case_count = validate_case_file("evals/behavioral-cases.json")
+    real_case_count = validate_case_file("evals/real-conversation-cases.json")
     source_count = len(json.loads((ROOT / "research/corpus-manifest.json").read_text(encoding="utf-8"))["sources"])
-    print(f"Skill package is valid: {case_count} behavioral cases, {source_count} theory sources.")
+    print(
+        f"Skill package is valid: {case_count} general cases, "
+        f"{real_case_count} real-conversation cases, {source_count} theory sources."
+    )
     return 0
 
 

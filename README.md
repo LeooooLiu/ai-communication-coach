@@ -187,7 +187,7 @@ Skill 也允许隐式调用，适合持续服务于日常协作。
 
 ## ✓ 行为评测
 
-仓库提供 [16 个发布前行为场景](evals/behavioral-cases.json)，测试的不是固定措辞，而是实际动作与交互成本：
+仓库提供 [17 个通用行为场景](evals/behavioral-cases.json)和 [10 个匿名真实对话场景](evals/real-conversation-cases.json)，测试的不是固定措辞，而是实际动作与交互成本：
 
 - 清楚的请求是否直接执行；
 - 可推断信息是否避免无必要确认；
@@ -204,6 +204,8 @@ uv run --with pyyaml python scripts/validate_package.py
 
 结构验证不等于模型行为已经得到证明。公开声称跨模型稳定前，应分别运行这些场景并记录模型、日期、结果和失败原因。
 
+首轮真实对话评测已记录在 [GPT-6 Luna behavior run](evals/runs/2026-09-27-gpt-6-luna.md)：初始 20 次响应发现 1 次过早提问，规则修正后目标案例 4/4 通过，必要分支对照 4/4 保留提问，自动调用路由模拟 6/6 符合预期。当前证据只支持单模型测试结论。
+
 ## ▣ 仓库结构
 
 <details>
@@ -217,7 +219,9 @@ ai-communication-coach/
 ├── assets/                        # 首页与社交分享视觉
 ├── evals/
 │   ├── README.md                  # 评测规则
-│   └── behavioral-cases.json      # 16 个行为场景
+│   ├── behavioral-cases.json      # 17 个通用行为场景
+│   ├── real-conversation-cases.json # 10 个匿名真实对话场景
+│   └── runs/                      # 按模型与日期记录的运行结果
 ├── references/
 │   ├── diagnostic-framework.md    # 需求诊断框架
 │   ├── examples.md                # 正反例与实际对话
@@ -249,7 +253,8 @@ ai-communication-coach/
 - [x] 持续反馈与多轮决定继承
 - [x] 9 项理论来源映射
 - [x] 可重建的本地全文语料库
-- [x] 16 个行为评测场景
+- [x] 17 个通用行为评测场景
+- [x] 10 个匿名真实对话场景与单模型运行记录
 - [x] GitHub Actions 包结构验证
 - [ ] 目标模型完整行为评测记录
 - [ ] 多模型一致性对比
