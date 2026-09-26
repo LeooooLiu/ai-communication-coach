@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here.
 
+## [Unreleased]
+
+### Changed
+
+- Reframed the GitHub introduction around familiar AI communication failures and a before-and-after dialogue.
+- Updated the social preview artwork with an experience-led question.
+- Added an explicit path for stars, anonymized examples, and behavior reports.
+
 ## [0.1.0] - 2026-09-27
 
 ### Added
