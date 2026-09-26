@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI 沟通教练"
+  short_description: "持续校准需求逻辑与表述精度，减少误解并提升 AI 协作效率"
+  default_prompt: "Use $ai-communication-coach to 先识别我是在执行、探索、复盘还是纠偏，再按理解风险对齐：可合理推断时陈述理解后继续，结果会分叉时说明影响并让我选择。"
+
+policy:
+  allow_implicit_invocation: true

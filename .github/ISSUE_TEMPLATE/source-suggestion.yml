@@ -1,0 +1,36 @@
+name: Theory source suggestion
+description: Suggest a source that would change or strengthen an operational rule.
+title: "[Source] "
+body:
+  - type: input
+    id: citation
+    attributes:
+      label: Source
+      description: Title, author, year, and canonical URL or DOI.
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: Operational value
+      description: Which existing judgment would this source support, revise, or challenge?
+    validations:
+      required: true
+  - type: dropdown
+    id: access
+    attributes:
+      label: Access level
+      options:
+        - Open full text
+        - Official preview or abstract
+        - Metadata only
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant evidence
+      description: Summarize the relevant idea in your own words. Avoid long copyrighted quotations.
+    validations:
+      required: true

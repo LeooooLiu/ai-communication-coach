@@ -1,0 +1,48 @@
+name: Behavior report
+description: Report a misunderstanding, unnecessary interruption, or incorrect attribution.
+title: "[Behavior] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share the smallest reproducible dialogue. Remove private or identifying information first.
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What was the user trying to accomplish?
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: User message
+      description: Paste the relevant message or a privacy-safe equivalent.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: What did the AI do, ask, infer, or fail to do?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Describe the action that would have reduced misunderstanding or interaction cost.
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model and host
+      placeholder: e.g. Codex, model name, app or CLI
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed private, identifying, and credential information.
+          required: true
