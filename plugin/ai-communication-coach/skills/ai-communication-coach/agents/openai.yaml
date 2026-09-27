@@ -1,6 +1,6 @@
 interface:
   display_name: "AI 沟通教练"
-  short_description: "从共享上下文理解意图，校准逻辑与表述，减少 AI 协作返工"
+  short_description: "帮助 AI 理解真实意图，优化提示词、需求表达与人机协作"
   default_prompt: "Use $ai-communication-coach to 先从当前任务、既有决定和证据重建我的可能意图，区分事实与工作假设；再识别对话状态和理解风险，可安全推断时继续，结果会分叉时只问关键决定。"
 
 policy:

@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping make AI Communication Coach more accurate and less intrusive.
+Thanks for helping make AI 沟通教练 (AI Communication Coach) more accurate and less intrusive.
 
 ## What makes a useful contribution
 

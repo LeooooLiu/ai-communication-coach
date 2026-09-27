@@ -2,7 +2,7 @@
   <img src="assets/hero.jpg" width="100%" alt="Two streams of fragmented dialogue becoming one clear structured path">
 </p>
 
-<h1 align="center">AI Communication Coach</h1>
+<h1 align="center">AI Communication Coach（AI 沟通教练）</h1>
 
 <p align="center">
   <strong>Does AI keep misunderstanding you?</strong><br>
@@ -105,7 +105,7 @@ python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-
 
 ### Plugin installation
 
-The v0.2.0 release includes a portable skills-only Agent Plugin. To install from the repository marketplace:
+The v0.2.1 release includes a portable skills-only Agent Plugin. To install from the repository marketplace:
 
 ```bash
 codex plugin marketplace add LeooooLiu/ai-communication-coach --ref main

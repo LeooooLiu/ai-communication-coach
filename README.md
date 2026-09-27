@@ -2,20 +2,21 @@
   <img src="assets/hero.jpg" width="100%" alt="Two streams of fragmented dialogue becoming one clear structured path">
 </p>
 
-<h1 align="center">AI Communication Coach</h1>
+<h1 align="center">AI 沟通教练｜AI Communication Coach</h1>
 
 <p align="center">
+  <strong>AI 沟通 · 提示词优化 · 需求澄清 · 人机协作</strong><br><br>
   <strong>总觉得 AI 很笨？</strong><br>
   有时候是模型能力不够，有时候是我们和 AI 从一开始就没在理解同一件事。
 </p>
 
 <p align="center">
-  一个在真实任务中找到误解、完成对齐，也帮助人逐渐把话说清楚的 Codex Skill。
+  一个面向中文用户的 Codex Skill：帮助 AI 从上下文理解真实意图，也帮助人把需求说清楚，减少误解与返工。
 </p>
 
 <p align="center">
   <a href="https://github.com/LeooooLiu/ai-communication-coach/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/LeooooLiu/ai-communication-coach/validate.yml?branch=main&style=for-the-badge&label=VALIDATION&labelColor=111827&color=22c55e" alt="Validation status"></a>
-  <img src="https://img.shields.io/badge/STATUS-v0.2_BETA-7c3aed?style=for-the-badge&labelColor=111827" alt="v0.2 beta">
+  <img src="https://img.shields.io/badge/STATUS-v0.2.1_BETA-7c3aed?style=for-the-badge&labelColor=111827" alt="v0.2.1 beta">
   <img src="https://img.shields.io/badge/THEORY_SOURCES-11-06b6d4?style=for-the-badge&labelColor=111827" alt="11 theory sources">
   <img src="https://img.shields.io/badge/BEHAVIOR_CASES-33-f97316?style=for-the-badge&labelColor=111827" alt="33 behavioral cases">
   <a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-22c55e?style=for-the-badge&labelColor=111827" alt="MIT license"></a>
@@ -30,7 +31,11 @@
   <a href="CONTRIBUTING.md">参与贡献</a>
 </p>
 
-## ✦ 你是不是也遇到过这些时刻？
+## ✦ AI 沟通为什么总会误解和返工？
+
+你可能搜过“怎么写好提示词”“AI 为什么听不懂我的需求”“怎样让 AI 准确执行”。真正影响结果的往往不只是一条 Prompt 的写法，还包括目标、上下文、范围、证据、权限和完成标准是否对齐。
+
+你可能遇到过这些时刻：
 
 - 你说“帮我优化一下”，AI 把你原本不想动的结构全部重做了。
 - 你说“先看看这个方案”，AI 直接开始修改文件。
@@ -41,7 +46,7 @@
 
 于是我们很容易得出一个结论：**这个 AI 怎么这么笨？**
 
-## ◈ AI 不够聪明，还是我们没有把话说好？
+## ◈ AI 不够聪明，还是需求没有对齐？
 
 两种情况都会发生。
 
@@ -57,7 +62,7 @@
 <table>
 <tr>
 <th width="50%">没有及时对齐</th>
-<th width="50%">使用 AI Communication Coach</th>
+<th width="50%">使用 AI 沟通教练</th>
 </tr>
 <tr>
 <td valign="top">
@@ -73,6 +78,8 @@
 </td>
 </tr>
 </table>
+
+这里的“提示词优化”不要求套用固定模板。AI 沟通教练会结合已经共享的上下文，找到真正影响执行的歧义，再决定直接推进、说明工作假设，还是只问一个关键问题。
 
 完成后，它还会留下一个可以迁移到下一次沟通的反馈：
 
@@ -148,6 +155,14 @@ flowchart LR
 </tr>
 </table>
 
+## ❖ 适合哪些提示词优化与需求澄清场景？
+
+- **写 Prompt 前**：把模糊想法整理成可执行的目标、范围与完成标准。
+- **AI 理解偏了时**：定位最早出现分歧的位置，区分表达缺口、上下文缺失与 AI 自身错误。
+- **复杂任务执行中**：沿用已经确认的决定，只在会改变结果的分叉处提问。
+- **对话结束后**：复盘哪些逻辑关系或措辞影响了结果，给出下一次可以直接使用的自然表达。
+- **长期人机协作中**：让 AI 更会理解人的省略表达，也让人的表达逻辑逐渐变得清楚、准确。
+
 ## ⚡ 快速安装
 
 ### 方式一：直接让 Codex 安装
@@ -169,7 +184,7 @@ python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-
 
 ### 方式三：安装 Skill-only Plugin
 
-v0.2.0 同时提供符合 Agent Plugins 目录结构的可移植包。通过仓库自带 marketplace 安装：
+v0.2.1 同时提供符合 Agent Plugins 目录结构的可移植包。通过仓库自带 marketplace 安装：
 
 ```bash
 codex plugin marketplace add LeooooLiu/ai-communication-coach --ref main

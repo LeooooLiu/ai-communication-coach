@@ -1,13 +1,13 @@
-# Plugin directory submission pack
+# AI 沟通教练 Plugin directory submission pack
 
-Prepared for AI Communication Coach v0.2.0. Final portal submission requires the publisher's verified OpenAI developer or business identity.
+Prepared for AI 沟通教练 (AI Communication Coach) v0.2.1. Final portal submission requires the publisher's verified OpenAI developer or business identity.
 
 ## Listing
 
-- **Name:** AI Communication Coach
+- **Name:** AI 沟通教练｜AI Communication Coach
 - **Category:** Productivity
-- **Short description:** Align intent, reduce AI rework, and improve how you reason and communicate through real tasks.
-- **Long description:** AI Communication Coach reconstructs likely intent from shared context, detects ambiguity that would change the result, and keeps work moving when a safe interpretation is available. It also gives concise, evidence-based feedback on the user's goals, assumptions, causal links, scope, and completion criteria. The skills-only package uses no publisher-operated server and includes traceable theory cards plus behavior evaluations.
+- **Short description:** 优化提示词与需求表达，让 AI 更准确理解并减少返工。
+- **Long description:** AI 沟通教练面向中文用户的提示词优化、需求澄清和人机协作场景。它从共享上下文重建最可能的意图，识别会改变结果的歧义，并在可以安全推断时继续工作；同时基于真实任务反馈目标、假设、因果、范围和完成标准中的表达问题。Skill-only 包不使用发布者服务器，并附有可追溯理论卡片与行为评测。
 - **Developer:** LeooooLiu
 - **Website:** https://github.com/LeooooLiu/ai-communication-coach
 - **Support:** https://github.com/LeooooLiu/ai-communication-coach/blob/main/SUPPORT.md
@@ -40,7 +40,7 @@ Prepared for AI Communication Coach v0.2.0. Final portal submission requires the
 
 ## Release notes
 
-Version 0.2.0 adds context-grounded intent reconstruction, six paired epistemic and authority-boundary cases, two-model evaluation evidence, a portable Agent Plugins package, and complete privacy, support, terms, and security documents.
+Version 0.2.1 makes “AI 沟通教练” the primary public name and adds Chinese discovery language for AI communication, prompt optimization, requirement clarification, human-AI collaboration, and reasoning clarity. It preserves the tested behavior and stable `ai-communication-coach` technical identifier from v0.2.0.
 
 ## Submission checklist
 

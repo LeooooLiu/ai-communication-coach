@@ -1,7 +1,7 @@
 {
   "name": "ai-communication-coach",
   "interface": {
-    "displayName": "AI Communication Coach"
+    "displayName": "AI 沟通教练"
   },
   "plugins": [
     {

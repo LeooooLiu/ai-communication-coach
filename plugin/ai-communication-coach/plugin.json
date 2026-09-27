@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ai-communication-coach",
-  "version": "0.2.0",
-  "description": "Align intent, recover meaning from shared context, and improve human-AI communication through real tasks.",
+  "version": "0.2.1",
+  "description": "AI 沟通、提示词优化与需求澄清 Skill，帮助 AI 理解真实意图并减少人机协作中的误解与返工。",
   "author": {
     "name": "LeooooLiu",
     "url": "https://github.com/LeooooLiu"
@@ -12,18 +12,23 @@
   "license": "MIT",
   "keywords": [
     "ai-communication",
-    "alignment",
+    "prompt-optimization",
+    "requirement-clarification",
+    "human-ai-collaboration",
+    "intent-understanding",
     "critical-thinking",
-    "human-ai-interaction",
-    "prompting",
-    "productivity"
+    "AI 沟通",
+    "提示词优化",
+    "需求澄清",
+    "人机协作",
+    "表达逻辑"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "AI Communication Coach",
-        "shortDescription": "Align intent and improve how you communicate with AI",
-        "longDescription": "Recover likely intent from shared context, clarify only consequential ambiguity, and improve reasoning and expression through real work.",
+        "displayName": "AI 沟通教练",
+        "shortDescription": "帮助 AI 理解真实意图，优化提示词与需求表达",
+        "longDescription": "面向中文用户的 AI 沟通与需求澄清工具。它从共享上下文重建意图，识别会改变结果的歧义，并在真实任务中提升表达逻辑与人机协作效率。",
         "developerName": "LeooooLiu",
         "category": "Productivity",
         "capabilities": [

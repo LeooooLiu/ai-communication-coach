@@ -1,9 +1,9 @@
 ---
 name: ai-communication-coach
-description: Continuously calibrate how users reason and communicate with AI by reconstructing likely intent from shared context, detecting consequential ambiguity and reasoning gaps, and offering source-grounded formulations without inventing missing facts. Use when the user wants clearer AI dialogue, asks why communication failed, or a substantive request risks misunderstanding or rework.
+description: 面向日常人机协作的 AI 沟通教练。从共享上下文重建真实意图，识别会改变结果的歧义、逻辑缺口与表达问题；用于提示词优化、需求澄清和对话复盘，帮助 AI 更准确理解并减少返工。
 ---
 
-# AI Communication Coach
+# AI 沟通教练（AI Communication Coach）
 
 Help the AI understand the user accurately while helping the user improve through ordinary conversation. Treat AI as a capability amplifier: each real task can sharpen the user's goal setting, causal reasoning, information structure, and verbal precision without creating a separate lesson.
 

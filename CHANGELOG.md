@@ -4,6 +4,14 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-09-27
+
+### Changed
+
+- Made “AI 沟通教练” the primary public name while preserving `ai-communication-coach` as the stable technical identifier.
+- Added natural Chinese discovery phrases for AI communication, prompt optimization, requirement clarification, human-AI collaboration, and reasoning clarity to the README and Plugin metadata.
+- Updated the repository presentation and release assets for a Chinese-first GitHub listing.
+
 ## [0.2.0] - 2026-09-27
 
 ### Changed
