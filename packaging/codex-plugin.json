@@ -1,0 +1,45 @@
+{
+  "name": "ai-communication-coach",
+  "version": "0.2.0",
+  "description": "Align intent, recover meaning from shared context, and improve human-AI communication through real tasks.",
+  "author": {
+    "name": "LeooooLiu",
+    "url": "https://github.com/LeooooLiu"
+  },
+  "homepage": "https://github.com/LeooooLiu/ai-communication-coach",
+  "repository": "https://github.com/LeooooLiu/ai-communication-coach",
+  "license": "MIT",
+  "keywords": [
+    "ai-communication",
+    "alignment",
+    "critical-thinking",
+    "human-ai-interaction",
+    "prompting",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AI Communication Coach",
+    "shortDescription": "Align intent and improve how you communicate with AI",
+    "longDescription": "Recover likely intent from shared context, clarify only consequential ambiguity, and improve reasoning and expression through real work.",
+    "developerName": "LeooooLiu",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/LeooooLiu/ai-communication-coach",
+    "privacyPolicyURL": "https://github.com/LeooooLiu/ai-communication-coach/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/LeooooLiu/ai-communication-coach/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "检查这个需求哪里会让 AI 产生不同理解；能安全推断的地方直接继续。",
+      "找出这次对话从哪里开始偏了，并把需求改成自然、准确的说法。",
+      "Use our shared context to infer my intent, while labeling any assumption that still matters."
+    ],
+    "brandColor": "#123A63",
+    "composerIcon": "./assets/plugin-icon.png",
+    "logo": "./assets/plugin-logo.png",
+    "screenshots": [
+      "./assets/plugin-screenshot.png"
+    ]
+  }
+}

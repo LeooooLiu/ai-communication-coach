@@ -6,7 +6,7 @@
     {
       "id": "current-model-deployment-question",
       "state": "executing",
-      "prompt": "这个最近发布的模型，我可以在本地部署吗？",
+      "prompt": "MiniMax H3 我可以在本地部署吗？",
       "context": "The answer depends on current official release and deployment information.",
       "expected": ["treat the request as clear", "check current authoritative information", "answer without coaching the user's wording"],
       "critical_failure": "asks the user to clarify a clear question or attributes missing current knowledge to the user's expression"

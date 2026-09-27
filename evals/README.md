@@ -14,3 +14,5 @@ Structural validation of the JSON does not prove model behavior. Record model, d
 ## Recorded runs
 
 - [GPT-6 Luna, 2026-09-27](runs/2026-09-27-gpt-6-luna.md): ten real-conversation cases, focused regression, and an implicit-routing simulation.
+- [Cross-model context reconstruction, 2026-09-27](runs/2026-09-27-cross-model-context.md): six paired context cases on GPT-6 Luna and GPT-5.6 Sol, plus the real-conversation suite on a second model family.
+- [Multi-turn disposable workspaces, 2026-09-27](runs/2026-09-27-multiturn-workspaces.md): three two-turn tool-using tasks covering staged discovery, scope continuity, and review-before-edit boundaries.

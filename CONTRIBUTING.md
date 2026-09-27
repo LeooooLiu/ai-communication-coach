@@ -23,7 +23,8 @@ General advice without an execution consequence is unlikely to belong in the cor
 5. Run:
 
 ```bash
-uv run --with pyyaml python scripts/validate_package.py
+uv run --with pyyaml --with jsonschema python scripts/validate_package.py
+python3 scripts/build_plugin.py --check
 ```
 
 ## Behavioral case shape

@@ -1,0 +1,20 @@
+{
+  "name": "ai-communication-coach",
+  "interface": {
+    "displayName": "AI Communication Coach"
+  },
+  "plugins": [
+    {
+      "name": "ai-communication-coach",
+      "source": {
+        "source": "local",
+        "path": "./plugin/ai-communication-coach"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -8,7 +8,9 @@ import json
 from pathlib import Path
 import re
 import sys
+from urllib.parse import urlparse
 
+from jsonschema import Draft202012Validator, FormatChecker
 import yaml
 
 
@@ -16,17 +18,35 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_FILES = {
     "SKILL.md",
     "README.md",
+    "README.en.md",
+    "VERSION",
     "LICENSE",
+    "PRIVACY.md",
+    "SECURITY.md",
+    "SUPPORT.md",
+    "TERMS.md",
+    ".agents/plugins/marketplace.json",
     "agents/openai.yaml",
+    "docs/plugin-submission.md",
+    "docs/release-readiness-v0.2.md",
     "evals/behavioral-cases.json",
     "evals/real-conversation-cases.json",
     "evals/runs/2026-09-27-gpt-6-luna.md",
+    "evals/runs/2026-09-27-cross-model-context.md",
+    "evals/runs/2026-09-27-multiturn-workspaces.md",
+    "packaging/plugin.json",
+    "packaging/codex-plugin.json",
+    "packaging/plugin.schema.json",
+    "plugin/ai-communication-coach/plugin.json",
+    "plugin/ai-communication-coach/.codex-plugin/plugin.json",
     "references/diagnostic-framework.md",
     "references/examples.md",
     "references/learning-loop.md",
     "references/theory-foundations.md",
     "research/corpus-manifest.json",
     "scripts/build_corpus.py",
+    "scripts/build_plugin.py",
+    "scripts/run_model_eval.py",
     "scripts/search_corpus.py",
 }
 LINK_RE = re.compile(r"(?<!!)\[[^]\n]+\]\(([^)\n]+)\)")
@@ -91,6 +111,69 @@ def validate_manifest() -> None:
         require(source.get("redistribution"), f"Missing redistribution status: {source.get('id')}")
 
 
+def validate_plugin_package() -> None:
+    version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+    require(re.fullmatch(r"\d+\.\d+\.\d+", version) is not None, "VERSION must use strict semantic versioning")
+
+    schema = json.loads((ROOT / "packaging/plugin.schema.json").read_text(encoding="utf-8"))
+    Draft202012Validator.check_schema(schema)
+    validator = Draft202012Validator(schema, format_checker=FormatChecker())
+
+    canonical = json.loads((ROOT / "packaging/plugin.json").read_text(encoding="utf-8"))
+    errors = sorted(validator.iter_errors(canonical), key=lambda error: list(error.path))
+    require(not errors, "Portable plugin manifest is invalid: " + "; ".join(error.message for error in errors))
+    require(canonical.get("version") == version, "Portable plugin version must match VERSION")
+
+    plugin_root = ROOT / "plugin/ai-communication-coach"
+    bundled = json.loads((plugin_root / "plugin.json").read_text(encoding="utf-8"))
+    require(bundled == canonical, "Bundled portable manifest is not synchronized")
+
+    extension = canonical["extensions"]["com.openai"]
+    interface = extension["interface"]
+    required_interface = {
+        "displayName",
+        "shortDescription",
+        "longDescription",
+        "developerName",
+        "category",
+        "capabilities",
+        "websiteURL",
+        "privacyPolicyURL",
+        "termsOfServiceURL",
+        "defaultPrompt",
+        "brandColor",
+        "composerIcon",
+        "logo",
+        "screenshots",
+    }
+    require(not (required_interface - interface.keys()), "OpenAI plugin interface metadata is incomplete")
+    prompts = interface["defaultPrompt"]
+    require(1 <= len(prompts) <= 3, "Plugin must provide one to three starter prompts")
+    require(all(len(prompt) <= 128 for prompt in prompts), "Plugin starter prompts must not exceed 128 characters")
+    for url_key in ("websiteURL", "privacyPolicyURL", "termsOfServiceURL"):
+        require(urlparse(interface[url_key]).scheme == "https", f"{url_key} must use HTTPS")
+    asset_paths = [interface["composerIcon"], interface["logo"], *interface["screenshots"]]
+    for relative in asset_paths:
+        require(relative.startswith("./assets/"), f"Plugin asset must be under ./assets/: {relative}")
+        require((plugin_root / relative.removeprefix("./")).is_file(), f"Missing plugin asset: {relative}")
+
+    overlay = json.loads((ROOT / "packaging/codex-plugin.json").read_text(encoding="utf-8"))
+    bundled_overlay = json.loads((plugin_root / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
+    require(overlay == bundled_overlay, "Bundled Codex compatibility manifest is not synchronized")
+    require(overlay.get("version") == version, "Codex compatibility version must match VERSION")
+    require(overlay.get("skills") == "./skills/", "Codex compatibility manifest must discover skills")
+
+    skill_root = plugin_root / "skills/ai-communication-coach"
+    require((skill_root / "SKILL.md").is_file(), "Portable plugin is missing its Skill")
+    require((skill_root / "SKILL.md").read_bytes() == (ROOT / "SKILL.md").read_bytes(), "Bundled SKILL.md is stale")
+
+    marketplace = json.loads((ROOT / ".agents/plugins/marketplace.json").read_text(encoding="utf-8"))
+    entries = marketplace.get("plugins", [])
+    matches = [entry for entry in entries if entry.get("name") == "ai-communication-coach"]
+    require(len(matches) == 1, "Marketplace must contain one ai-communication-coach entry")
+    require(matches[0]["source"] == {"source": "local", "path": "./plugin/ai-communication-coach"}, "Unexpected marketplace source")
+
+
 def validate_links() -> None:
     missing: list[str] = []
     for markdown in ROOT.rglob("*.md"):
@@ -118,6 +201,7 @@ def main() -> int:
         validate_python,
         validate_behavior_cases,
         validate_manifest,
+        validate_plugin_package,
         validate_links,
         validate_distribution_boundary,
     ]

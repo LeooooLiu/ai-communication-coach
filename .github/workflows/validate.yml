@@ -20,8 +20,24 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install validator dependency
-        run: python -m pip install --disable-pip-version-check pyyaml
+      - name: Install validator dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
 
       - name: Validate public package
         run: python scripts/validate_package.py
+
+      - name: Verify portable plugin tree
+        run: python scripts/build_plugin.py --check
+
+      - name: Build portable plugin archive
+        run: python scripts/build_plugin.py --archive dist/ai-communication-coach-plugin.zip
+
+      - name: Inspect archive layout
+        run: unzip -t dist/ai-communication-coach-plugin.zip
+
+      - name: Upload portable plugin artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-communication-coach-plugin
+          path: dist/ai-communication-coach-plugin.zip
+          if-no-files-found: error

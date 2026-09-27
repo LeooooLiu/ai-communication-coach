@@ -1,0 +1,42 @@
+name: Bug report
+description: Report an installation, packaging, validation, or script problem.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Remove secrets, personal details, and proprietary project content before submitting.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: v0.2.0 or commit SHA
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: macOS 15, Codex CLI 0.x, Python 3.12
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Include the smallest sequence that reproduces the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Observed behavior
+      description: Include the exact error text when useful.
+    validations:
+      required: true

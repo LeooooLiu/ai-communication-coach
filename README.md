@@ -15,13 +15,14 @@
 
 <p align="center">
   <a href="https://github.com/LeooooLiu/ai-communication-coach/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/LeooooLiu/ai-communication-coach/validate.yml?branch=main&style=for-the-badge&label=VALIDATION&labelColor=111827&color=22c55e" alt="Validation status"></a>
-  <img src="https://img.shields.io/badge/STATUS-v0.1_BETA-7c3aed?style=for-the-badge&labelColor=111827" alt="v0.1 beta">
-  <img src="https://img.shields.io/badge/THEORY_SOURCES-9-06b6d4?style=for-the-badge&labelColor=111827" alt="9 theory sources">
-  <img src="https://img.shields.io/badge/BEHAVIOR_CASES-16-f97316?style=for-the-badge&labelColor=111827" alt="16 behavioral cases">
+  <img src="https://img.shields.io/badge/STATUS-v0.2_BETA-7c3aed?style=for-the-badge&labelColor=111827" alt="v0.2 beta">
+  <img src="https://img.shields.io/badge/THEORY_SOURCES-11-06b6d4?style=for-the-badge&labelColor=111827" alt="11 theory sources">
+  <img src="https://img.shields.io/badge/BEHAVIOR_CASES-33-f97316?style=for-the-badge&labelColor=111827" alt="33 behavioral cases">
   <a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-22c55e?style=for-the-badge&labelColor=111827" alt="MIT license"></a>
 </p>
 
 <p align="center">
+  <a href="README.en.md">English</a> ·
   <a href="#-快速安装">快速安装</a> ·
   <a href="#-它怎样工作">工作方式</a> ·
   <a href="#-理论底座">理论底座</a> ·
@@ -34,6 +35,7 @@
 - 你说“帮我优化一下”，AI 把你原本不想动的结构全部重做了。
 - 你说“先看看这个方案”，AI 直接开始修改文件。
 - 你补充了一段背景，AI 却把每一句背景都当成硬性要求。
+- 你说“继续按刚才那版做”，AI 没有利用已经共享的上下文，又让你从头解释。
 - 你已经说清楚了范围，AI 还是不断问“要不要继续”“这样可以吗”。
 - 结果不对时，你只能再解释一遍；改到第三轮，才发现双方一开始理解的就不是同一件事。
 
@@ -119,20 +121,30 @@ flowchart LR
 | **复盘** | 先理解经验和感受，再决定是否需要表达校准 |
 | **纠偏 / 改向** | 区分 AI 误解、补充信息和用户主动改变决定 |
 
+### 从不完整表达中重建意图
+
+人类说话会省略双方已经知道的内容。Skill 会按一个最小上下文栈理解当前消息：**原话 → 当前任务 → 已确认决定与权限 → 双方可见证据 → 一般语用线索**。当只有一个解释得到强支持、且下一步可逆时，它会把这个解释当作工作假设继续；当多个解释会改变结果时，才让用户选择。
+
+这个过程始终区分**共享事实、工作解释、待验证假设和未知信息**。它不会因为一句话“听起来像”某种意思，就擅自推断隐藏动机、私人情况、身份，或扩大外部操作权限。
+
 ## ✺ 核心能力
 
 <table>
 <tr>
+<td width="50%" valign="top"><strong>🧩 上下文意图重建</strong><br><br>从当前任务、既有决定和共同证据中补全合理省略，同时保留事实与推断的边界。</td>
 <td width="50%" valign="top"><strong>🧭 需求对齐</strong><br><br>识别目标、产物、范围、证据、优先级、权限与完成标准，只处理会影响结果的缺口。</td>
+</tr>
+<tr>
 <td width="50%" valign="top"><strong>🧠 逻辑校准</strong><br><br>发现目标与手段混淆、事实与假设混淆、因果跳跃、范围过度和冲突约束。</td>
-</tr>
-<tr>
 <td width="50%" valign="top"><strong>🔁 多轮连续性</strong><br><br>沿用已经确认的决定；把用户改变想法视为新决定，不反复确认旧范围。</td>
-<td width="50%" valign="top"><strong>⚖️ 正确归因</strong><br><br>区分用户表达、缺少上下文、AI 错误、模型或工具限制，以及外部事实本身的不确定性。</td>
 </tr>
 <tr>
+<td width="50%" valign="top"><strong>⚖️ 正确归因</strong><br><br>区分用户表达、缺少上下文、AI 错误、模型或工具限制，以及外部事实本身的不确定性。</td>
 <td width="50%" valign="top"><strong>🌱 持续反馈</strong><br><br>用“证据 → 模式 → 影响 → 修正 → 后续观察”帮助用户在真实协作中逐渐进步。</td>
+</tr>
+<tr>
 <td width="50%" valign="top"><strong>🪶 低打扰</strong><br><br>反馈深度随任务调整；支持用户随时减少、延后或关闭表达点评。</td>
+<td width="50%" valign="top"><strong>🔎 推断边界</strong><br><br>把合理补全标成工作解释；不把可能性写成事实，也不从语气推断隐藏动机或新增权限。</td>
 </tr>
 </table>
 
@@ -155,6 +167,17 @@ python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-
   --name ai-communication-coach
 ```
 
+### 方式三：安装 Skill-only Plugin
+
+v0.2.0 同时提供符合 Agent Plugins 目录结构的可移植包。通过仓库自带 marketplace 安装：
+
+```bash
+codex plugin marketplace add LeooooLiu/ai-communication-coach --ref main
+codex plugin add ai-communication-coach@ai-communication-coach
+```
+
+安装后新建一个任务，让宿主加载新 Skill。
+
 安装完成后，在下一轮对话中即可调用：
 
 ```text
@@ -166,7 +189,7 @@ Skill 也允许隐式调用，适合持续服务于日常协作。
 
 ## ◉ 理论底座
 
-当前版本综合了 **9 项可追溯来源：3 本书、2 篇奠基性章节、2 篇研究论文、2 项国际标准**。
+当前版本综合了 **11 项可追溯来源：3 本书、2 篇奠基性章节、4 篇研究论文、2 项国际标准**。
 
 | 来源 | 在 Skill 中的用途 |
 | --- | --- |
@@ -179,6 +202,8 @@ Skill 也允许隐式调用，适合持续服务于日常协作。
 | ISO 24495-1 | 让信息对目标读者相关、易找、易懂并可使用 |
 | Minto 金字塔原理 | 先说核心结论，再组织支持信息 |
 | EMNLP 2024 人机对话准则研究 | 把经典会话原则映射到现代人机对话与透明度要求 |
+| Goodman 与 Frank 的概率语用学 | 把理解视为结合说话者、语言形式和上下文的意图推断 |
+| Bender 与 Koller 的语言理解边界 | 防止把语言上合理的补全误当成有现实依据的事实或意图 |
 
 完整的采用规则、来源链接与适用边界见 [Theory Foundations](references/theory-foundations.md)。这是一套基于既有研究与标准形成的设计综合；来源数量本身不作为效果证明。
 
@@ -187,7 +212,7 @@ Skill 也允许隐式调用，适合持续服务于日常协作。
 
 ## ✓ 行为评测
 
-仓库提供 [17 个通用行为场景](evals/behavioral-cases.json)和 [10 个匿名真实对话场景](evals/real-conversation-cases.json)，测试的不是固定措辞，而是实际动作与交互成本：
+仓库提供 [23 个通用行为场景](evals/behavioral-cases.json)和 [10 个匿名真实对话场景](evals/real-conversation-cases.json)，测试的不是固定措辞，而是实际动作与交互成本：
 
 - 清楚的请求是否直接执行；
 - 可推断信息是否避免无必要确认；
@@ -196,15 +221,22 @@ Skill 也允许隐式调用，适合持续服务于日常协作。
 - AI 是否承担自己的推断错误；
 - 模型知识不足是否被错误归因给用户；
 - 用户关闭点评后是否得到尊重；
-- 冲突约束是否被准确暴露。
+- 冲突约束是否被准确暴露；
+- 省略内容是否只从共享上下文恢复；
+- 假设、隐藏动机和外部操作权限是否保持正确边界。
 
 ```bash
-uv run --with pyyaml python scripts/validate_package.py
+uv run --with pyyaml --with jsonschema python scripts/validate_package.py
+python3 scripts/build_plugin.py --check
 ```
 
 结构验证不等于模型行为已经得到证明。公开声称跨模型稳定前，应分别运行这些场景并记录模型、日期、结果和失败原因。
 
-首轮真实对话评测已记录在 [GPT-6 Luna behavior run](evals/runs/2026-09-27-gpt-6-luna.md)：初始 20 次响应发现 1 次过早提问，规则修正后目标案例 4/4 通过，必要分支对照 4/4 保留提问，自动调用路由模拟 6/6 符合预期。当前证据只支持单模型测试结论。
+首轮真实对话评测记录在 [GPT-6 Luna behavior run](evals/runs/2026-09-27-gpt-6-luna.md)：初始 20 次响应发现 1 次过早提问，规则修正后目标案例 4/4 通过，必要分支对照 4/4 保留提问，自动调用路由模拟 6/6 符合预期。
+
+[跨模型上下文意图重建评测](evals/runs/2026-09-27-cross-model-context.md)覆盖 GPT-6 Luna 与 GPT-5.6 Sol：新增场景共 18/18 次响应通过；修复一处破坏关键指代的匿名化样例后，GPT-5.6 Sol 的 10 个真实对话场景全部通过。这个证据支持当前两个模型配置与已覆盖场景，不等于所有模型和宿主都会稳定产生相同行为。
+
+[多轮临时工作区评测](evals/runs/2026-09-27-multiturn-workspaces.md)让模型在三个独立 Git 仓库中先检查、再接收短指令并实际修改文件：3/3 场景在第一轮保持零改动，第二轮沿用已选方案、桌面端范围和审查边界，最终文件结果全部符合预期。
 
 ## ▣ 仓库结构
 
@@ -215,11 +247,15 @@ uv run --with pyyaml python scripts/validate_package.py
 ai-communication-coach/
 ├── SKILL.md                       # Skill 的核心行为规则
 ├── README.md                      # GitHub 展示与使用说明
+├── README.en.md                   # 完整英文文档
 ├── agents/openai.yaml             # Codex 展示与默认调用配置
 ├── assets/                        # 首页与社交分享视觉
+├── plugin/ai-communication-coach/ # 可移植 Skill-only Plugin
+├── packaging/                     # 清单源文件与固定版本 Schema
+├── .agents/plugins/marketplace.json # 仓库级安装入口
 ├── evals/
 │   ├── README.md                  # 评测规则
-│   ├── behavioral-cases.json      # 17 个通用行为场景
+│   ├── behavioral-cases.json      # 23 个通用行为场景
 │   ├── real-conversation-cases.json # 10 个匿名真实对话场景
 │   └── runs/                      # 按模型与日期记录的运行结果
 ├── references/
@@ -232,6 +268,8 @@ ai-communication-coach/
 │   └── README.md                  # 私有语料构建说明
 └── scripts/
     ├── build_corpus.py            # 下载、抽取、分块与建立索引
+    ├── build_plugin.py            # 同步 Plugin 树并生成发布包
+    ├── run_model_eval.py          # 运行隔离的模型行为评测
     ├── search_corpus.py           # SQLite FTS5 检索
     └── validate_package.py        # 公共包结构验证
 ```
@@ -251,15 +289,16 @@ ai-communication-coach/
 
 - [x] 三档理解风险与四种对话状态
 - [x] 持续反馈与多轮决定继承
-- [x] 9 项理论来源映射
+- [x] 上下文意图重建与事实 / 推断边界
+- [x] 11 项理论来源映射
 - [x] 可重建的本地全文语料库
-- [x] 17 个通用行为评测场景
-- [x] 10 个匿名真实对话场景与单模型运行记录
+- [x] 23 个通用行为评测场景
+- [x] 10 个匿名真实对话场景与首轮运行记录
 - [x] GitHub Actions 包结构验证
-- [ ] 目标模型完整行为评测记录
-- [ ] 多模型一致性对比
-- [ ] 按当前 OpenAI 规范封装为 Skill-only Plugin
-- [ ] 英文完整文档
+- [x] 两个模型配置的上下文重建与真实对话评测记录
+- [x] 按当前 OpenAI 规范封装为 Skill-only Plugin
+- [x] 英文完整文档
+- [ ] 扩展到更多模型、宿主和语言的长期回归样本
 
 ## ♡ 参与贡献
 
@@ -277,14 +316,7 @@ ai-communication-coach/
 
 代码、原创文档与视觉资产以 [MIT License](LICENSE) 发布。第三方理论与来源仍归各自权利人所有；仓库只提供引用、来源说明与允许公开分发的内容。
 
-<details>
-<summary><strong>English summary</strong></summary>
-
-AI Communication Coach is a Codex Skill that improves task alignment and the user's communication habits inside real work. It distinguishes execution, exploration, reflection, and repair; scales clarification to actual rework risk; attributes failures to the right source; and offers concise, evidence-based feedback without turning every conversation into a lesson.
-
-Install it from the repository root as `ai-communication-coach`. The public package includes the operational Skill, theory cards, corpus builder, and behavioral evaluation cases. Downloaded source documents remain in a private Git-ignored cache.
-
-</details>
+完整英文说明见 [README.en.md](README.en.md)。
 
 <p align="center">
   <strong>Clearer requests. Fewer detours. Better thinking through real work.</strong>
