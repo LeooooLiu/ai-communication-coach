@@ -172,8 +172,11 @@ The repository includes:
 - a [GPT-6 Luna run](evals/runs/2026-09-27-gpt-6-luna.md);
 - a [cross-model context reconstruction run](evals/runs/2026-09-27-cross-model-context.md) covering GPT-6 Luna and GPT-5.6 Sol.
 - a [multi-turn disposable workspace run](evals/runs/2026-09-27-multiturn-workspaces.md) covering staged inspection, scope continuity, and review-before-edit boundaries.
+- a [published v0.2.0 artifact run](evals/runs/2026-09-27-release-artifact.md) covering checksum verification, installation, positive activation, and quiet negative use.
 
 The cross-model run passed 18/18 context-reconstruction responses. The corrected ten-case real-conversation suite passed 10/10 on GPT-5.6 Sol. In three tool-using multi-turn tasks, every first turn preserved the no-edit boundary and every second turn produced the expected scoped file change. These results support the tested configurations and cases; they do not claim universal behavior across every model or host.
+
+The complete structural, distribution, and release-asset evidence is recorded in [v0.2.0 release verification](docs/release-verification-v0.2.md).
 
 Run structural validation:
 

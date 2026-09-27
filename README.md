@@ -238,6 +238,8 @@ python3 scripts/build_plugin.py --check
 
 [多轮临时工作区评测](evals/runs/2026-09-27-multiturn-workspaces.md)让模型在三个独立 Git 仓库中先检查、再接收短指令并实际修改文件：3/3 场景在第一轮保持零改动，第二轮沿用已选方案、桌面端范围和审查边界，最终文件结果全部符合预期。
 
+[v0.2.0 发布物回读评测](evals/runs/2026-09-27-release-artifact.md)从 GitHub Release 重新下载并验签 ZIP，再在干净环境中安装：应介入的歧义请求只问一个关键选择，简单翻译则只返回译文。完整发布证据见 [Release verification](docs/release-verification-v0.2.md)。
+
 ## ▣ 仓库结构
 
 <details>

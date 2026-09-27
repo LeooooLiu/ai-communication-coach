@@ -13,7 +13,7 @@ Baseline recorded on 2026-09-27 before release work began.
 
 - [x] Build a portable skills-only plugin with root `plugin.json` and `skills/ai-communication-coach/`.
 - [x] Validate the portable manifest, bundled Skill, assets, and archive layout.
-- [ ] Verify direct Skill installation from the public repository in a clean environment.
+- [x] Verify direct Skill installation from the public repository in a clean environment.
 - [x] Verify plugin installation from a Git-backed local marketplace.
 
 ## Public repository
@@ -26,10 +26,10 @@ Baseline recorded on 2026-09-27 before release work began.
 
 ## Release
 
-- [ ] Commit the release candidate and pass local validation.
-- [ ] Pass GitHub Actions from the release commit.
-- [ ] Create a semantic version tag and GitHub Release with the portable plugin ZIP.
-- [ ] Install the published release artifact and verify one positive and one negative activation case.
+- [x] Commit the release candidate and pass local validation.
+- [x] Pass GitHub Actions from the release commit.
+- [x] Create a semantic version tag and GitHub Release with the portable plugin ZIP.
+- [x] Install the published release artifact and verify one positive and one negative activation case.
 
 ## External directory submission
 
